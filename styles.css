@@ -1,0 +1,167 @@
+/* styles.css */
+
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #232F3E; /* Azul oscuro de AWS */
+    color: #FFFFFF;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo-container {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.logo-container img {
+    max-width: 200px;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
+}
+
+h1 {
+    text-align: center;
+    margin: 40px 0;
+    color: #FF9900; /* Naranja de AWS */
+    font-weight: bold;
+}
+
+.category {
+    margin-bottom: 60px;
+}
+
+.category h2 {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #FF9900;
+    position: relative;
+    overflow: hidden;
+}
+
+.category h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 3px;
+    background-color: #FF9900;
+    transition: width 0.3s;
+}
+
+.category h2:hover::after {
+    width: 100%;
+}
+
+.category h2 img {
+    margin-right: 15px;
+    width: 64px;
+    height: 64px;
+    transition: transform 0.3s;
+}
+
+.category h2 img:hover {
+    transform: rotate(15deg);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.service {
+    background-color: #37475A;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, transparent 0%, transparent 70%, rgba(255, 255, 255, 0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.service:hover::before {
+    opacity: 1;
+}
+
+.service img {
+    max-width: 64px;
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.service:hover img {
+    transform: scale(1.1);
+}
+
+.service h3 {
+    color: #FF9900;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.service p {
+    color: #D1D5DB;
+    line-height: 1.5;
+}
+
+/* Estilos para el efecto de fade-in y fade-out */
+.fade {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Ajustes para impresión en PDF */
+@media print {
+    body {
+        background-color: #FFFFFF;
+        color: #000000;
+    }
+    .service {
+        background-color: #FFFFFF;
+        box-shadow: none;
+    }
+    .category h2 img {
+        display: none;
+    }
+    .logo-container {
+        background: none;
+    }
+    .logo-container img {
+        max-width: 150px;
+    }
+    /* Eliminar animaciones en impresión */
+    * {
+        animation: none !important;
+    }
+}
